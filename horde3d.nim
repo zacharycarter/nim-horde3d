@@ -151,13 +151,13 @@ proc h3dGetResType*(res: H3DRes): cint {.importc: "h3dGetResType",
 proc h3dGetResName*(res: H3DRes): cstring {.importc: "h3dGetResName", 
     dynlib: libName.}
 
-proc h3dGetNextResource*(`type`: cint; start: H3DRes): H3DRes {.
+proc h3dGetNextResource*(`type`: H3DResTypes; start: H3DRes): H3DRes {.
     importc: "h3dGetNextResource", dynlib: libName.}
 
-proc h3dFindResource*(`type`: cint; name: cstring): H3DRes {.
+proc h3dFindResource*(`type`: H3DResTypes; name: cstring): H3DRes {.
     importc: "h3dFindResource", dynlib: libName.}
 
-proc h3dAddResource*(`type`: cint; name: cstring; flags: cint): H3DRes {.
+proc h3dAddResource*(`type`: H3DResTypes; name: cstring; flags: cint): H3DRes {.
     importc: "h3dAddResource", dynlib: libName.}
 
 proc h3dCloneResource*(sourceRes: H3DRes; name: cstring): H3DRes {.
