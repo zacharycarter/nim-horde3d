@@ -15,7 +15,7 @@
 {.deadCodeElim: on.}
 
 when defined(Linux):
-  const libName = "libHorde3D.so"
+  const libHorde3D* = "libHorde3D.so"
 
 type
   H3DRes* = cint
@@ -109,277 +109,277 @@ type
 const H3DRootNode*: H3DNode = cint(1)
 
 proc h3dGetVersionString*(): cstring {.importc: "h3dGetVersionString", 
-                                       dynlib: libName.}
+                                       dynlib: libHorde3D.}
 
 proc h3dCheckExtension*(extensionName: cstring): bool {.
-    importc: "h3dCheckExtension", dynlib: libName.}
+    importc: "h3dCheckExtension", dynlib: libHorde3D.}
 
-proc h3dGetError*(): bool {.importc: "h3dGetError", dynlib: libName.}
+proc h3dGetError*(): bool {.importc: "h3dGetError", dynlib: libHorde3D.}
 
-proc h3dInit*(): bool {.importc: "h3dInit", dynlib: libName.}
+proc h3dInit*(): bool {.importc: "h3dInit", dynlib: libHorde3D.}
 
-proc h3dRelease*() {.importc: "h3dRelease", dynlib: libName.}
+proc h3dRelease*() {.importc: "h3dRelease", dynlib: libHorde3D.}
 
-proc h3dRender*(cameraNode: H3DNode) {.importc: "h3dRender", dynlib: libName.}
+proc h3dRender*(cameraNode: H3DNode) {.importc: "h3dRender", dynlib: libHorde3D.}
 
-proc h3dFinalizeFrame*() {.importc: "h3dFinalizeFrame", dynlib: libName.}
+proc h3dFinalizeFrame*() {.importc: "h3dFinalizeFrame", dynlib: libHorde3D.}
 
-proc h3dClear*() {.importc: "h3dClear", dynlib: libName.}
+proc h3dClear*() {.importc: "h3dClear", dynlib: libHorde3D.}
 
 proc h3dGetMessage*(level: ptr cint; time: ptr cfloat): cstring {.
-    importc: "h3dGetMessage", dynlib: libName.}
+    importc: "h3dGetMessage", dynlib: libHorde3D.}
 
 proc h3dGetOption*(param: H3DOptions): cfloat {.importc: "h3dGetOption", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetOption*(param: H3DOptions; value: cfloat): bool {.
-    importc: "h3dSetOption", dynlib: libName.}
+    importc: "h3dSetOption", dynlib: libHorde3D.}
 
 proc h3dGetStat*(param: H3DStats; reset: bool): cfloat {.importc: "h3dGetStat", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dShowOverlays*(verts: ptr cfloat; vertCount: cint; colR: cfloat; 
                       colG: cfloat; colB: cfloat; colA: cfloat; 
                       materialRes: H3DRes; flags: cint) {.
-    importc: "h3dShowOverlays", dynlib: libName.}
+    importc: "h3dShowOverlays", dynlib: libHorde3D.}
 
-proc h3dClearOverlays*() {.importc: "h3dClearOverlays", dynlib: libName.}
+proc h3dClearOverlays*() {.importc: "h3dClearOverlays", dynlib: libHorde3D.}
 
 proc h3dGetResType*(res: H3DRes): cint {.importc: "h3dGetResType", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dGetResName*(res: H3DRes): cstring {.importc: "h3dGetResName", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dGetNextResource*(`type`: H3DResTypes; start: H3DRes): H3DRes {.
-    importc: "h3dGetNextResource", dynlib: libName.}
+    importc: "h3dGetNextResource", dynlib: libHorde3D.}
 
 proc h3dFindResource*(`type`: H3DResTypes; name: cstring): H3DRes {.
-    importc: "h3dFindResource", dynlib: libName.}
+    importc: "h3dFindResource", dynlib: libHorde3D.}
 
 proc h3dAddResource*(`type`: H3DResTypes; name: cstring; flags: cint): H3DRes {.
-    importc: "h3dAddResource", dynlib: libName.}
+    importc: "h3dAddResource", dynlib: libHorde3D.}
 
 proc h3dCloneResource*(sourceRes: H3DRes; name: cstring): H3DRes {.
-    importc: "h3dCloneResource", dynlib: libName.}
+    importc: "h3dCloneResource", dynlib: libHorde3D.}
 
 proc h3dRemoveResource*(res: H3DRes): cint {.importc: "h3dRemoveResource", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dIsResLoaded*(res: H3DRes): bool {.importc: "h3dIsResLoaded", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dLoadResource*(res: H3DRes; data: cstring; size: cint): bool {.
-    importc: "h3dLoadResource", dynlib: libName.}
+    importc: "h3dLoadResource", dynlib: libHorde3D.}
 
 proc h3dUnloadResource*(res: H3DRes) {.importc: "h3dUnloadResource", 
-                                       dynlib: libName.}
+                                       dynlib: libHorde3D.}
 
 proc h3dGetResElemCount*(res: H3DRes; elem: cint): cint {.
-    importc: "h3dGetResElemCount", dynlib: libName.}
+    importc: "h3dGetResElemCount", dynlib: libHorde3D.}
 
 proc h3dFindResElem*(res: H3DRes; elem: cint; param: cint; value: cstring): cint {.
-    importc: "h3dFindResElem", dynlib: libName.}
+    importc: "h3dFindResElem", dynlib: libHorde3D.}
 
 proc h3dGetResParamI*(res: H3DRes; elem: cint; elemIdx: cint; param: cint): cint {.
-    importc: "h3dGetResParamI", dynlib: libName.}
+    importc: "h3dGetResParamI", dynlib: libHorde3D.}
 
 proc h3dSetResParamI*(res: H3DRes; elem: cint; elemIdx: cint; param: cint; 
-                      value: cint) {.importc: "h3dSetResParamI", dynlib: libName.}
+                      value: cint) {.importc: "h3dSetResParamI", dynlib: libHorde3D.}
 
 proc h3dGetResParamF*(res: H3DRes; elem: cint; elemIdx: cint; param: cint; 
                       compIdx: cint): cfloat {.importc: "h3dGetResParamF", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetResParamF*(res: H3DRes; elem: cint; elemIdx: cint; param: cint; 
                       compIdx: cint; value: cfloat) {.
-    importc: "h3dSetResParamF", dynlib: libName.}
+    importc: "h3dSetResParamF", dynlib: libHorde3D.}
 
 proc h3dGetResParamStr*(res: H3DRes; elem: cint; elemIdx: cint; param: cint): cstring {.
-    importc: "h3dGetResParamStr", dynlib: libName.}
+    importc: "h3dGetResParamStr", dynlib: libHorde3D.}
 
 proc h3dSetResParamStr*(res: H3DRes; elem: cint; elemIdx: cint; param: cint; 
                         value: cstring) {.importc: "h3dSetResParamStr", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dMapResStream*(res: H3DRes; elem: cint; elemIdx: cint; stream: cint; 
                       read: bool; write: bool): pointer {.
-    importc: "h3dMapResStream", dynlib: libName.}
+    importc: "h3dMapResStream", dynlib: libHorde3D.}
 
 proc h3dUnmapResStream*(res: H3DRes) {.importc: "h3dUnmapResStream", 
-                                       dynlib: libName.}
+                                       dynlib: libHorde3D.}
 
 proc h3dQueryUnloadedResource*(index: cint): H3DRes {.
-    importc: "h3dQueryUnloadedResource", dynlib: libName.}
+    importc: "h3dQueryUnloadedResource", dynlib: libHorde3D.}
 
 proc h3dReleaseUnusedResources*() {.importc: "h3dReleaseUnusedResources", 
-                                    dynlib: libName.}
+                                    dynlib: libHorde3D.}
 
 proc h3dCreateTexture*(name: cstring; width: cint; height: cint; fmt: cint; 
                        flags: cint): H3DRes {.importc: "h3dCreateTexture", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetShaderPreambles*(vertPreamble: cstring; fragPreamble: cstring) {.
-    importc: "h3dSetShaderPreambles", dynlib: libName.}
+    importc: "h3dSetShaderPreambles", dynlib: libHorde3D.}
 
 proc h3dSetMaterialUniform*(materialRes: H3DRes; name: cstring; a: cfloat; 
                             b: cfloat; c: cfloat; d: cfloat): bool {.
-    importc: "h3dSetMaterialUniform", dynlib: libName.}
+    importc: "h3dSetMaterialUniform", dynlib: libHorde3D.}
 
 proc h3dResizePipelineBuffers*(pipeRes: H3DRes; width: cint; height: cint) {.
-    importc: "h3dResizePipelineBuffers", dynlib: libName.}
+    importc: "h3dResizePipelineBuffers", dynlib: libHorde3D.}
 
 proc h3dGetRenderTargetData*(pipelineRes: H3DRes; targetName: cstring; 
                              bufIndex: cint; width: ptr cint; height: ptr cint; 
                              compCount: ptr cint; dataBuffer: pointer; 
                              bufferSize: cint): bool {.
-    importc: "h3dGetRenderTargetData", dynlib: libName.}
+    importc: "h3dGetRenderTargetData", dynlib: libHorde3D.}
 
 proc h3dGetNodeType*(node: H3DNode): cint {.importc: "h3dGetNodeType", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dGetNodeParent*(node: H3DNode): H3DNode {.importc: "h3dGetNodeParent", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetNodeParent*(node: H3DNode; parent: H3DNode): bool {.
-    importc: "h3dSetNodeParent", dynlib: libName.}
+    importc: "h3dSetNodeParent", dynlib: libHorde3D.}
 
 proc h3dGetNodeChild*(node: H3DNode; index: cint): H3DNode {.
-    importc: "h3dGetNodeChild", dynlib: libName.}
+    importc: "h3dGetNodeChild", dynlib: libHorde3D.}
 
 proc h3dAddNodes*(parent: H3DNode; sceneGraphRes: H3DRes): H3DNode {.
-    importc: "h3dAddNodes", dynlib: libName.}
+    importc: "h3dAddNodes", dynlib: libHorde3D.}
 
-proc h3dRemoveNode*(node: H3DNode) {.importc: "h3dRemoveNode", dynlib: libName.}
+proc h3dRemoveNode*(node: H3DNode) {.importc: "h3dRemoveNode", dynlib: libHorde3D.}
 
 proc h3dCheckNodeTransFlag*(node: H3DNode; reset: bool): bool {.
-    importc: "h3dCheckNodeTransFlag", dynlib: libName.}
+    importc: "h3dCheckNodeTransFlag", dynlib: libHorde3D.}
 
 proc h3dGetNodeTransform*(node: H3DNode; tx: ptr cfloat; ty: ptr cfloat; 
                           tz: ptr cfloat; rx: ptr cfloat; ry: ptr cfloat; 
                           rz: ptr cfloat; sx: ptr cfloat; sy: ptr cfloat; 
                           sz: ptr cfloat) {.importc: "h3dGetNodeTransform", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetNodeTransform*(node: H3DNode; tx: cfloat; ty: cfloat; tz: cfloat; 
                           rx: cfloat; ry: cfloat; rz: cfloat; sx: cfloat; 
                           sy: cfloat; sz: cfloat) {.
-    importc: "h3dSetNodeTransform", dynlib: libName.}
+    importc: "h3dSetNodeTransform", dynlib: libHorde3D.}
 
 proc h3dGetNodeTransMats*(node: H3DNode; relMat: ptr ptr cfloat; 
                           absMat: ptr ptr cfloat) {.
-    importc: "h3dGetNodeTransMats", dynlib: libName.}
+    importc: "h3dGetNodeTransMats", dynlib: libHorde3D.}
 
 proc h3dSetNodeTransMat*(node: H3DNode; mat4x4: ptr cfloat) {.
-    importc: "h3dSetNodeTransMat", dynlib: libName.}
+    importc: "h3dSetNodeTransMat", dynlib: libHorde3D.}
 
 proc h3dGetNodeParamI*(node: H3DNode; param: cint): cint {.
-    importc: "h3dGetNodeParamI", dynlib: libName.}
+    importc: "h3dGetNodeParamI", dynlib: libHorde3D.}
 
 proc h3dSetNodeParamI*(node: H3DNode; param: cint; value: cint) {.
-    importc: "h3dSetNodeParamI", dynlib: libName.}
+    importc: "h3dSetNodeParamI", dynlib: libHorde3D.}
 
 proc h3dGetNodeParamF*(node: H3DNode; param: cint; compIdx: cint): cfloat {.
-    importc: "h3dGetNodeParamF", dynlib: libName.}
+    importc: "h3dGetNodeParamF", dynlib: libHorde3D.}
 
 proc h3dSetNodeParamF*(node: H3DNode; param: cint; compIdx: cint; value: cfloat) {.
-    importc: "h3dSetNodeParamF", dynlib: libName.}
+    importc: "h3dSetNodeParamF", dynlib: libHorde3D.}
 
 proc h3dGetNodeParamStr*(node: H3DNode; param: cint): cstring {.
-    importc: "h3dGetNodeParamStr", dynlib: libName.}
+    importc: "h3dGetNodeParamStr", dynlib: libHorde3D.}
 
 proc h3dSetNodeParamStr*(node: H3DNode; param: cint; value: cstring) {.
-    importc: "h3dSetNodeParamStr", dynlib: libName.}
+    importc: "h3dSetNodeParamStr", dynlib: libHorde3D.}
 
 proc h3dGetNodeFlags*(node: H3DNode): cint {.importc: "h3dGetNodeFlags", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetNodeFlags*(node: H3DNode; flags: cint; recursive: bool) {.
-    importc: "h3dSetNodeFlags", dynlib: libName.}
+    importc: "h3dSetNodeFlags", dynlib: libHorde3D.}
 
 proc h3dGetNodeAABB*(node: H3DNode; minX: ptr cfloat; minY: ptr cfloat; 
                      minZ: ptr cfloat; maxX: ptr cfloat; maxY: ptr cfloat; 
                      maxZ: ptr cfloat) {.importc: "h3dGetNodeAABB", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dFindNodes*(startNode: H3DNode; name: cstring; `type`: cint): cint {.
-    importc: "h3dFindNodes", dynlib: libName.}
+    importc: "h3dFindNodes", dynlib: libHorde3D.}
 
 proc h3dGetNodeFindResult*(index: cint): H3DNode {.
-    importc: "h3dGetNodeFindResult", dynlib: libName.}
+    importc: "h3dGetNodeFindResult", dynlib: libHorde3D.}
 
 proc h3dSetNodeUniforms*(node: H3DNode; uniformData: ptr cfloat; count: cint) {.
-    importc: "h3dSetNodeUniforms", dynlib: libName.}
+    importc: "h3dSetNodeUniforms", dynlib: libHorde3D.}
 
 proc h3dCastRay*(node: H3DNode; ox: cfloat; oy: cfloat; oz: cfloat; dx: cfloat; 
                  dy: cfloat; dz: cfloat; numNearest: cint): cint {.
-    importc: "h3dCastRay", dynlib: libName.}
+    importc: "h3dCastRay", dynlib: libHorde3D.}
 
 proc h3dGetCastRayResult*(index: cint; node: ptr H3DNode; distance: ptr cfloat; 
                           intersection: ptr cfloat): bool {.
-    importc: "h3dGetCastRayResult", dynlib: libName.}
+    importc: "h3dGetCastRayResult", dynlib: libHorde3D.}
 
 proc h3dCheckNodeVisibility*(node: H3DNode; cameraNode: H3DNode; 
                              checkOcclusion: bool; calcLod: bool): cint {.
-    importc: "h3dCheckNodeVisibility", dynlib: libName.}
+    importc: "h3dCheckNodeVisibility", dynlib: libHorde3D.}
 
 proc h3dAddGroupNode*(parent: H3DNode; name: cstring): H3DNode {.
-    importc: "h3dAddGroupNode", dynlib: libName.}
+    importc: "h3dAddGroupNode", dynlib: libHorde3D.}
 
 proc h3dAddModelNode*(parent: H3DNode; name: cstring; geometryRes: H3DRes): H3DNode {.
-    importc: "h3dAddModelNode", dynlib: libName.}
+    importc: "h3dAddModelNode", dynlib: libHorde3D.}
 
 proc h3dSetupModelAnimStage*(modelNode: H3DNode; stage: cint; 
                              animationRes: H3DRes; layer: cint; 
                              startNode: cstring; additive: bool) {.
-    importc: "h3dSetupModelAnimStage", dynlib: libName.}
+    importc: "h3dSetupModelAnimStage", dynlib: libHorde3D.}
 
 proc h3dGetModelAnimParams*(modelNode: H3DNode; stage: cint; time: ptr cfloat; 
                             weight: ptr cfloat) {.
-    importc: "h3dGetModelAnimParams", dynlib: libName.}
+    importc: "h3dGetModelAnimParams", dynlib: libHorde3D.}
 
 proc h3dSetModelAnimParams*(modelNode: H3DNode; stage: cint; time: cfloat; 
                             weight: cfloat) {.importc: "h3dSetModelAnimParams", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dSetModelMorpher*(modelNode: H3DNode; target: cstring; weight: cfloat): bool {.
-    importc: "h3dSetModelMorpher", dynlib: libName.}
+    importc: "h3dSetModelMorpher", dynlib: libHorde3D.}
 
 proc h3dUpdateModel*(modelNode: H3DNode; flags: cint) {.
-    importc: "h3dUpdateModel", dynlib: libName.}
+    importc: "h3dUpdateModel", dynlib: libHorde3D.}
 
 proc h3dAddMeshNode*(parent: H3DNode; name: cstring; materialRes: H3DRes; 
                      batchStart: cint; batchCount: cint; vertRStart: cint; 
                      vertREnd: cint): H3DNode {.importc: "h3dAddMeshNode", 
-    dynlib: libName.}
+    dynlib: libHorde3D.}
 
 proc h3dAddJointNode*(parent: H3DNode; name: cstring; jointIndex: cint): H3DNode {.
-    importc: "h3dAddJointNode", dynlib: libName.}
+    importc: "h3dAddJointNode", dynlib: libHorde3D.}
 
 proc h3dAddLightNode*(parent: H3DNode; name: cstring; materialRes: H3DRes; 
                       lightingContext: cstring; shadowContext: cstring): H3DNode {.
-    importc: "h3dAddLightNode", dynlib: libName.}
+    importc: "h3dAddLightNode", dynlib: libHorde3D.}
 
 proc h3dAddCameraNode*(parent: H3DNode; name: cstring; pipelineRes: H3DRes): H3DNode {.
-    importc: "h3dAddCameraNode", dynlib: libName.}
+    importc: "h3dAddCameraNode", dynlib: libHorde3D.}
 
 proc h3dSetupCameraView*(cameraNode: H3DNode; fov: cfloat; aspect: cfloat; 
                          nearDist: cfloat; farDist: cfloat) {.
-    importc: "h3dSetupCameraView", dynlib: libName.}
+    importc: "h3dSetupCameraView", dynlib: libHorde3D.}
 
 proc h3dGetCameraProjMat*(cameraNode: H3DNode; projMat: ptr cfloat) {.
-    importc: "h3dGetCameraProjMat", dynlib: libName.}
+    importc: "h3dGetCameraProjMat", dynlib: libHorde3D.}
 
 proc h3dSetCameraProjMat*(cameraNode: H3DNode; projMat: ptr cfloat) {.
-    importc: "h3dSetCameraProjMat", dynlib: libName.}
+    importc: "h3dSetCameraProjMat", dynlib: libHorde3D.}
 
 proc h3dAddEmitterNode*(parent: H3DNode; name: cstring; materialRes: H3DRes; 
                         particleEffectRes: H3DRes; maxParticleCount: cint; 
                         respawnCount: cint): H3DNode {.
-    importc: "h3dAddEmitterNode", dynlib: libName.}
+    importc: "h3dAddEmitterNode", dynlib: libHorde3D.}
 
 proc h3dUpdateEmitter*(emitterNode: H3DNode; timeDelta: cfloat) {.
-    importc: "h3dUpdateEmitter", dynlib: libName.}
+    importc: "h3dUpdateEmitter", dynlib: libHorde3D.}
 
 proc h3dHasEmitterFinished*(emitterNode: H3DNode): bool {.
-    importc: "h3dHasEmitterFinished", dynlib: libName.}
+    importc: "h3dHasEmitterFinished", dynlib: libHorde3D.}

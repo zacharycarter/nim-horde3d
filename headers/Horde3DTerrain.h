@@ -9,23 +9,14 @@
 //
 // *************************************************************************************************
 
+# skipcomments
+# dynlib libHorde3D
+# define libHorde3D "libHorde3D.so"
+
 /*	Title: Horde3D Terrain Extension */
 
-#pragma once
 
-#include "Horde3D.h"
-
-#ifndef DLL
-#	if defined( WIN32 ) || defined( _WINDOWS )
-#		define DLL extern "C" __declspec( dllimport )
-#	else
-#		if defined( __GNUC__ ) && __GNUC__ >= 4
-#		  define DLLEXP extern "C" __attribute__ ((visibility("default")))
-#   	else
-#		  define DLLEXP extern "C"
-#   	endif
-#	endif
-#endif
+#include "horde3d.h"
 
 
 /*	Topic: Introduction
@@ -57,7 +48,7 @@
 const int H3DEXT_NodeType_Terrain = 100;
 
 
-struct H3DEXTTerrain
+enum H3DEXTTerrain
 {
 	/*	Enum: H3DEXTTerrain
 			The available Terrain node parameters.
@@ -68,14 +59,11 @@ struct H3DEXTTerrain
 		SkirtHeightF   - Height of the skirts used to hide cracks (default: 0.1)
 		BlockSizeI     - Size of a terrain block that is drawn in a single render call; must be 2^n+1 (default: 17)
 	*/
-	enum List
-	{
 		HeightTexResI = 10000,
 		MatResI,
 		MeshQualityF,
 		SkirtHeightF,
 		BlockSizeI
-	};
 };
 
 
@@ -94,7 +82,7 @@ struct H3DEXTTerrain
 	Returns:
 		 handle to the created node or 0 in case of failure
 */
-DLL H3DNode h3dextAddTerrainNode( H3DNode parent, const char *name, H3DRes heightMapRes, H3DRes materialRes );
+H3DNode h3dextAddTerrainNode( H3DNode parent, const char *name, H3DRes heightMapRes, H3DRes materialRes );
 
 
 /* Function: h3dextCreateTerrainGeoRes
@@ -114,4 +102,4 @@ DLL H3DNode h3dextAddTerrainNode( H3DNode parent, const char *name, H3DRes heigh
 	Returns:
 		 handle to the created Geometry resource or 0 in case of failure
 */
-DLL H3DRes h3dextCreateTerrainGeoRes( H3DNode node, const char *resName, float meshQuality );
+H3DRes h3dextCreateTerrainGeoRes( H3DNode node, const char *resName, float meshQuality );

@@ -10,23 +10,27 @@
 //
 // *************************************************************************************************
 
+# skipcomments
+# dynlib libHorde3DUtils
+# define libHorde3DUtils "libHorde3DUtils.so"
+
 /*	Title: Horde3D Utility Library */
 
-#pragma once
+// #pragma once
 
-#include "Horde3D.h"
+#include "horde3d.h"
 
-#ifndef DLL
-#	if defined( WIN32 ) || defined( _WINDOWS )
-#		define DLL extern "C" __declspec( dllimport )
-#	else
-#  if defined( __GNUC__ ) && __GNUC__ >= 4
-#   define DLL extern "C" __attribute__ ((visibility("default")))
-#  else
-#		define DLL extern "C"
-#  endif
-#	endif
-#endif
+// #ifndef DLL
+// #	if defined( WIN32 ) || defined( _WINDOWS )
+// #		define extern "C" __declspec( dllimport )
+// #	else
+// #  if defined( __GNUC__ ) && __GNUC__ >= 4
+// #   define extern "C" __attribute__ ((visibility("default")))
+// #  else
+// #		define extern "C"
+// #  endif
+// #	endif
+// #endif
 
 
 /*	Topic: Introduction
@@ -60,7 +64,7 @@ const int H3DUTMaxStatMode = 2;
 	Returns:
 		nothing
 */
-DLL void h3dutFreeMem( char **ptr );
+void h3dutFreeMem( char **ptr );
 
 /*	Function: h3dutDumpMessages
 		Writes all messages in the queue to a log file.
@@ -75,7 +79,7 @@ DLL void h3dutFreeMem( char **ptr );
 	Returns:
 		true in case of success, otherwise false
 */
-DLL bool h3dutDumpMessages();
+bool h3dutDumpMessages();
 
 /*	Group: Resource management */
 /* Function: h3dutGetResourcePath
@@ -94,7 +98,7 @@ DLL bool h3dutDumpMessages();
 	Returns:
 		pointer to the search path string
 */
-DLL const char *h3dutGetResourcePath( int type );
+const char *h3dutGetResourcePath( int type );
 
 /* Function: h3dutSetResourcePath
 		*Deprecated*
@@ -113,7 +117,7 @@ DLL const char *h3dutGetResourcePath( int type );
 	Returns:
 		nothing
 */
-DLL void h3dutSetResourcePath( int type, const char *path );
+void h3dutSetResourcePath( int type, const char *path );
 
 /* Function: h3dutLoadResourcesFromDisk
 		Loads previously added resources from a data drive.
@@ -130,7 +134,7 @@ DLL void h3dutSetResourcePath( int type, const char *path );
 	Returns:
 		false if at least one resource could not be loaded, otherwise true
 */
-DLL bool h3dutLoadResourcesFromDisk( const char *contentDir );
+bool h3dutLoadResourcesFromDisk( const char *contentDir );
 
 /* Function: h3dutCreateGeometryRes
 		Creates a Geometry resource from specified vertex data.
@@ -156,7 +160,7 @@ DLL bool h3dutLoadResourcesFromDisk( const char *contentDir );
 	Returns:
 		handle to new Geometry resource or 0 in case of failure
 */
-DLL H3DRes h3dutCreateGeometryRes( const char *name, int numVertices, int numTriangleIndices, 
+H3DRes h3dutCreateGeometryRes( const char *name, int numVertices, int numTriangleIndices, 
 								   float *posData, unsigned int *indexData, short *normalData,
 								   short *tangentData, short *bitangentData, 
 								   float *texData1, float *texData2 );
@@ -184,7 +188,7 @@ DLL H3DRes h3dutCreateGeometryRes( const char *name, int numVertices, int numTri
 	Returns:
 		false if at least one resource could not be loaded, otherwise true
 */
-DLL bool h3dutCreateTGAImage( const unsigned char *pixels, int width, int height, int bpp,
+bool h3dutCreateTGAImage( const unsigned char *pixels, int width, int height, int bpp,
                               char **outData, int *outSize );
 
 /*	Group: Utils */
@@ -201,7 +205,7 @@ DLL bool h3dutCreateTGAImage( const unsigned char *pixels, int width, int height
 	Returns:
 		true if the file could be written, otherwise false
 */
-DLL bool h3dutScreenshot( const char *filename );
+bool h3dutScreenshot( const char *filename );
 
 
 /*	Group: Scene graph */
@@ -223,7 +227,7 @@ DLL bool h3dutScreenshot( const char *filename );
 	Returns:
 		nothing
 */
-DLL void h3dutPickRay( H3DNode cameraNode, float nwx, float nwy, float *ox, float *oy, float *oz,
+void h3dutPickRay( H3DNode cameraNode, float nwx, float nwy, float *ox, float *oy, float *oz,
                        float *dx, float *dy, float *dz );
 
 /* Function: h3dutPickNode
@@ -242,7 +246,7 @@ DLL void h3dutPickRay( H3DNode cameraNode, float nwx, float nwy, float *ox, floa
 	Returns:
 		handle of picked node or 0 if no node was hit
 */
-DLL H3DNode h3dutPickNode( H3DNode cameraNode, float nwx, float nwy );
+H3DNode h3dutPickNode( H3DNode cameraNode, float nwx, float nwy );
 
 /*	Group: Overlays */
 /* Function: h3dutShowText
@@ -264,7 +268,7 @@ DLL H3DNode h3dutPickNode( H3DNode cameraNode, float nwx, float nwy );
 	Returns:
 		nothing
 */
-DLL void h3dutShowText( const char *text, float x, float y, float size,
+void h3dutShowText( const char *text, float x, float y, float size,
                         float colR, float colG, float colB, H3DRes fontMaterialRes );
 
 /* Function: h3dutShowFrameStats
@@ -283,4 +287,4 @@ DLL void h3dutShowText( const char *text, float x, float y, float size,
 	Returns:
 		nothing
 */
-DLL void h3dutShowFrameStats( H3DRes fontMaterialRes, H3DRes panelMaterialRes, int mode );
+void h3dutShowFrameStats( H3DRes fontMaterialRes, H3DRes panelMaterialRes, int mode );
